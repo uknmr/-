@@ -14,10 +14,22 @@ function main() {
 
   const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
   const sheet = activeSpreadsheet.getSheetByName(ENV.TRIX_SHEET_NAME)
+
   Trix.setValues(sheet, {
     feedlyCounts,
     feedlyBoardCounts,
     pocketCounts,
     scrapboxCounts,
+  })
+
+  const chartImage = Trix.getChartImage(sheet)
+  const gyazoImageUrl = Gyazo.upload(chartImage)
+
+  Slack.post({
+    feedlyCounts,
+    feedlyBoardCounts,
+    pocketCounts,
+    scrapboxCounts,
+    gyazoImageUrl,
   })
 }

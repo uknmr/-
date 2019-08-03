@@ -28,4 +28,9 @@ namespace Trix {
 
     targetRange.setValues([values])
   }
+
+  export function getChartImage(sheet: GoogleAppsScript.Spreadsheet.Sheet) {
+    const charts = sheet.getCharts()
+    return charts[0].getBlob()
+  }
 }
