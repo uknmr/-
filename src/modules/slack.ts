@@ -52,12 +52,9 @@ namespace Slack {
       ],
     }
 
-    UrlFetchApp.fetch(
-      'https://hooks.slack.com/services/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',
-      {
-        payload: JSON.stringify(data),
-        muteHttpExceptions: true,
-      },
-    )
+    UrlFetchApp.fetch(ENV.SLACK_WEBHOOK_URL, {
+      payload: JSON.stringify(data),
+      muteHttpExceptions: true,
+    })
   }
 }
